@@ -1,0 +1,192 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Explore Kerala on a budget. The ultimate travel guide for students, solo travelers, and families under ₹2,000." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title} | Explore Kerala</title>
+	</head>
+	<body>
+		<header class="sticky-header glass">
+			<div class="container header-content">
+				<a href="/" class="logo">Explore Kerala</a>
+				<nav class="main-nav">
+					<a href="/destinations">Destinations</a>
+					<a href="/guides">Guides</a>
+					<a href="/budget-calculator">Budget Calc</a>
+				</nav>
+				<div class="header-actions">
+					<button id="theme-toggle" class="btn btn-icon" aria-label="Toggle Dark Mode">
+						<svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+						<svg id="sun-icon" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+					</button>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+
+		<footer class="glass mt-8 py-16">
+			<div class="container footer-grid">
+				<div class="footer-col">
+					<h3>Explore Kerala</h3>
+					<p>Your ultimate guide to traveling "God's Own Country" on a budget.</p>
+				</div>
+				<div class="footer-col">
+					<h4>Links</h4>
+					<ul>
+						<li><a href="/about">About Us</a></li>
+						<li><a href="/contact">Contact</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>Legal</h4>
+					<ul>
+						<li><a href="/privacy">Privacy Policy</a></li>
+						<li><a href="/terms">Terms & Conditions</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>Newsletter</h4>
+					<form class="newsletter-form">
+						<input type="email" placeholder="Enter your email" required />
+						<button type="submit" class="btn btn-primary">Subscribe</button>
+					</form>
+				</div>
+			</div>
+			<div class="container text-center mt-8">
+				<p>&copy; {new Date().getFullYear()} Explore Kerala. All rights reserved.</p>
+			</div>
+		</footer>
+
+		<script>
+			// Theme Toggle Logic
+			const themeToggle = document.getElementById('theme-toggle');
+			const moonIcon = document.getElementById('moon-icon');
+			const sunIcon = document.getElementById('sun-icon');
+
+			// Check for saved theme or system preference
+			const savedTheme = localStorage.getItem('theme');
+			const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+			
+			if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+				document.documentElement.setAttribute('data-theme', 'dark');
+				moonIcon.style.display = 'none';
+				sunIcon.style.display = 'block';
+			}
+
+			themeToggle.addEventListener('click', () => {
+				const currentTheme = document.documentElement.getAttribute('data-theme');
+				if (currentTheme === 'dark') {
+					document.documentElement.removeAttribute('data-theme');
+					localStorage.setItem('theme', 'light');
+					moonIcon.style.display = 'block';
+					sunIcon.style.display = 'none';
+				} else {
+					document.documentElement.setAttribute('data-theme', 'dark');
+					localStorage.setItem('theme', 'dark');
+					moonIcon.style.display = 'none';
+					sunIcon.style.display = 'block';
+				}
+			});
+
+			// Scroll Reveal
+			function reveal() {
+				var reveals = document.querySelectorAll(".reveal");
+				for (var i = 0; i < reveals.length; i++) {
+					var windowHeight = window.innerHeight;
+					var elementTop = reveals[i].getBoundingClientRect().top;
+					var elementVisible = 100;
+					if (elementTop < windowHeight - elementVisible) {
+						reveals[i].classList.add("active");
+					}
+				}
+			}
+			window.addEventListener("scroll", reveal);
+			reveal(); // trigger on load
+		</script>
+
+		<style>
+			.sticky-header {
+				position: sticky;
+				top: 0;
+				z-index: 100;
+				padding: 1rem 0;
+			}
+			.header-content {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.logo {
+				font-size: 1.5rem;
+				font-weight: 700;
+				font-family: var(--font-heading);
+				color: var(--primary);
+			}
+			.main-nav {
+				display: flex;
+				gap: 1.5rem;
+			}
+			.main-nav a {
+				font-weight: 500;
+				color: var(--text-color);
+			}
+			.main-nav a:hover {
+				color: var(--primary);
+			}
+			.btn-icon {
+				background: transparent;
+				color: var(--text-color);
+				padding: 0.5rem;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.btn-icon:hover {
+				background: rgba(128, 128, 128, 0.1);
+			}
+			.footer-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 2rem;
+			}
+			.footer-col h3, .footer-col h4 {
+				margin-bottom: 1rem;
+			}
+			.footer-col ul {
+				list-style: none;
+			}
+			.footer-col ul li {
+				margin-bottom: 0.5rem;
+			}
+			.newsletter-form {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+			}
+			.newsletter-form input {
+				padding: 0.75rem;
+				border-radius: 4px;
+				border: 1px solid var(--border-color);
+				background: var(--card-bg);
+				color: var(--text-color);
+			}
+		</style>
+	</body>
+</html>

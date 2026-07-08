@@ -1,0 +1,187 @@
+---
+import Layout from './Layout.astro';
+import '../styles/global.css';
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title} description={frontmatter.description}>
+	<!-- Guide Hero -->
+	<section class="guide-hero relative">
+		<div class="hero-bg" style={`background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('${frontmatter.heroImage}');`}></div>
+		<div class="container hero-content text-center reveal">
+			<span class="category-badge">{frontmatter.category}</span>
+			<h1 class="hero-title">{frontmatter.title}</h1>
+			<p class="hero-subtitle">{frontmatter.description}</p>
+			<div class="author-meta mt-4">
+				<span>By {frontmatter.author}</span> | <span>{frontmatter.date}</span> | <span>{frontmatter.readTime}</span>
+			</div>
+		</div>
+	</section>
+
+	<div class="container guide-layout mt-8 mb-8">
+		<!-- Sidebar Share/TOC -->
+		<aside class="sidebar glass sticky-sidebar reveal">
+			<h3>Share</h3>
+			<div class="social-share mb-8">
+				<a href="#" class="btn-icon">FB</a>
+				<a href="#" class="btn-icon">TW</a>
+				<a href="#" class="btn-icon">WA</a>
+			</div>
+			
+			<h3>Table of Contents</h3>
+			<nav class="toc">
+				<!-- We can use JS to auto-generate this, or manual anchors -->
+				<a href="#overview">Overview</a>
+				<a href="#itinerary">Itinerary</a>
+				<a href="#budget-breakdown">Budget Breakdown</a>
+				<a href="#tips">Pro Tips</a>
+			</nav>
+		</aside>
+
+		<!-- Main Content -->
+		<article class="content glass p-8 reveal">
+			<div class="reading-progress-container">
+				<div class="reading-progress-bar" id="reading-progress"></div>
+			</div>
+			<slot />
+		</article>
+	</div>
+</Layout>
+
+<script>
+	// Reading Progress Bar
+	window.addEventListener('scroll', () => {
+		const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+		const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+		const scrolled = (winScroll / height) * 100;
+		document.getElementById('reading-progress').style.width = scrolled + '%';
+	});
+</script>
+
+<style>
+	.guide-hero {
+		min-height: 60vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		position: relative;
+		overflow: hidden;
+		margin-top: -80px;
+	}
+	.hero-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-position: center;
+		background-size: cover;
+		z-index: -1;
+	}
+	.category-badge {
+		background: var(--primary);
+		color: white;
+		padding: 0.25rem 1rem;
+		border-radius: 20px;
+		font-weight: 600;
+		font-size: 0.85rem;
+		text-transform: uppercase;
+		display: inline-block;
+		margin-bottom: 1rem;
+	}
+	.hero-title {
+		font-size: 3rem;
+		margin-bottom: 0.5rem;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.hero-subtitle {
+		font-size: 1.25rem;
+		opacity: 0.9;
+		max-width: 700px;
+		margin: 1rem auto;
+	}
+	.author-meta {
+		font-size: 0.9rem;
+		opacity: 0.8;
+	}
+	.guide-layout {
+		display: grid;
+		grid-template-columns: 250px 1fr;
+		gap: 2rem;
+	}
+	.sticky-sidebar {
+		position: sticky;
+		top: 100px;
+		align-self: start;
+		padding: 1.5rem;
+		border-radius: 12px;
+	}
+	.social-share {
+		display: flex;
+		gap: 0.5rem;
+	}
+	.toc {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin-top: 1rem;
+	}
+	.toc a {
+		color: var(--text-color);
+		opacity: 0.8;
+	}
+	.toc a:hover {
+		color: var(--primary);
+		opacity: 1;
+	}
+	.content {
+		border-radius: 12px;
+		position: relative;
+	}
+	
+	/* Reading Progress */
+	.reading-progress-container {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background: rgba(0,0,0,0.05);
+		border-radius: 12px 12px 0 0;
+		overflow: hidden;
+	}
+	.reading-progress-bar {
+		height: 100%;
+		background: var(--primary);
+		width: 0%;
+	}
+	
+	.content :global(h2) {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		color: var(--primary);
+	}
+	.content :global(h3) {
+		margin-top: 1.5rem;
+		margin-bottom: 0.75rem;
+	}
+	.content :global(ul) {
+		margin-left: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+	.content :global(p) {
+		margin-bottom: 1.5rem;
+	}
+	
+	@media (max-width: 768px) {
+		.guide-layout {
+			grid-template-columns: 1fr;
+		}
+		.sticky-sidebar {
+			position: static;
+		}
+	}
+</style>

@@ -1,0 +1,124 @@
+---
+import Layout from './Layout.astro';
+import '../styles/global.css';
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title} description={frontmatter.description}>
+	<!-- Destination Hero -->
+	<section class="dest-hero relative">
+		<div class="hero-bg" style={`background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('${frontmatter.heroImage}');`}></div>
+		<div class="container hero-content text-center reveal">
+			<h1 class="hero-title">{frontmatter.title}</h1>
+			<p class="hero-subtitle">{frontmatter.subtitle}</p>
+		</div>
+	</section>
+
+	<div class="container dest-layout mt-8 mb-8">
+		<!-- Sidebar Navigation (Table of Contents) -->
+		<aside class="sidebar glass sticky-sidebar reveal">
+			<h3>On this page</h3>
+			<nav class="toc">
+				<a href="#introduction">Introduction</a>
+				<a href="#how-to-reach">How to Reach</a>
+				<a href="#attractions">Best Attractions</a>
+				<a href="#hidden-places">Hidden Places</a>
+				<a href="#budget">Budget & Stay</a>
+				<a href="#itinerary">Itinerary</a>
+			</nav>
+		</aside>
+
+		<!-- Main Content -->
+		<article class="content glass p-8 reveal">
+			<slot />
+		</article>
+	</div>
+</Layout>
+
+<style>
+	.dest-hero {
+		min-height: 50vh;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: white;
+		position: relative;
+		overflow: hidden;
+		margin-top: -80px; /* pull up behind header */
+	}
+	.hero-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-position: center;
+		background-size: cover;
+		z-index: -1;
+	}
+	.hero-title {
+		font-size: 3.5rem;
+		margin-bottom: 0.5rem;
+	}
+	.hero-subtitle {
+		font-size: 1.25rem;
+		opacity: 0.9;
+	}
+	.dest-layout {
+		display: grid;
+		grid-template-columns: 250px 1fr;
+		gap: 2rem;
+	}
+	.sticky-sidebar {
+		position: sticky;
+		top: 100px;
+		align-self: start;
+		padding: 1.5rem;
+		border-radius: 12px;
+	}
+	.toc {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin-top: 1rem;
+	}
+	.toc a {
+		color: var(--text-color);
+		opacity: 0.8;
+	}
+	.toc a:hover {
+		color: var(--primary);
+		opacity: 1;
+	}
+	.content {
+		border-radius: 12px;
+	}
+	.content :global(h2) {
+		margin-top: 2rem;
+		margin-bottom: 1rem;
+		color: var(--primary);
+		border-bottom: 1px solid var(--border-color);
+		padding-bottom: 0.5rem;
+	}
+	.content :global(h3) {
+		margin-top: 1.5rem;
+		margin-bottom: 0.75rem;
+	}
+	.content :global(ul) {
+		margin-left: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+	.content :global(p) {
+		margin-bottom: 1.5rem;
+	}
+	
+	@media (max-width: 768px) {
+		.dest-layout {
+			grid-template-columns: 1fr;
+		}
+		.sticky-sidebar {
+			position: static;
+		}
+	}
+</style>
