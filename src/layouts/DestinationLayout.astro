@@ -1,0 +1,117 @@
+---
+import Layout from './Layout.astro';
+import '../styles/global.css';
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title} description={frontmatter.description}>
+	<!-- Minimalist Destination Hero -->
+	<section class="dest-hero bg-light text-center py-16">
+		<div class="container hero-content">
+			<h1 class="hero-title">{frontmatter.title}</h1>
+			<p class="hero-subtitle text-light">{frontmatter.subtitle}</p>
+			{frontmatter.heroImage && (
+				<img src={frontmatter.heroImage} alt={frontmatter.title} class="hero-image shadow-md mt-8" loading="lazy" />
+			)}
+		</div>
+	</section>
+
+	<div class="container dest-layout mt-8 mb-8">
+		<!-- Sidebar Navigation (Table of Contents) -->
+		<aside class="sidebar sticky-sidebar">
+			<div class="card p-4 shadow-sm">
+				<h3 style="margin-bottom: 0.5rem; font-size: 1rem;">On this page</h3>
+				<nav class="toc">
+					<a href="#introduction">Introduction</a>
+					<a href="#how-to-reach">How to Reach</a>
+					<a href="#attractions">Best Attractions</a>
+					<a href="#hidden-places">Hidden Places</a>
+					<a href="#budget">Budget & Stay</a>
+					<a href="#itinerary">Itinerary</a>
+				</nav>
+			</div>
+		</aside>
+
+		<!-- Main Content -->
+		<article class="content p-8 card shadow-sm">
+			<slot />
+		</article>
+	</div>
+</Layout>
+
+<style>
+	.bg-light {
+		background-color: var(--secondary-bg);
+		border-bottom: 1px solid var(--border-color);
+	}
+	.hero-title {
+		font-size: 3rem;
+		margin-bottom: 0.5rem;
+		color: var(--primary);
+	}
+	.hero-subtitle {
+		font-size: 1.25rem;
+	}
+	.hero-image {
+		width: 100%;
+		max-height: 400px;
+		object-fit: cover;
+		border-radius: 8px;
+	}
+	.dest-layout {
+		display: grid;
+		grid-template-columns: 250px 1fr;
+		gap: 2rem;
+	}
+	.sticky-sidebar {
+		position: sticky;
+		top: 100px;
+		align-self: start;
+	}
+	.p-4 { padding: 1rem; }
+	.p-8 { padding: 2rem; }
+	
+	.toc {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.toc a {
+		color: var(--text-light);
+		font-size: 0.9rem;
+	}
+	.toc a:hover {
+		color: var(--primary);
+	}
+	
+	.content :global(h2) {
+		margin-top: 2.5rem;
+		margin-bottom: 1rem;
+		color: var(--primary);
+		border-bottom: 1px solid var(--border-color);
+		padding-bottom: 0.5rem;
+	}
+	.content :global(h3) {
+		margin-top: 1.5rem;
+		margin-bottom: 0.75rem;
+	}
+	.content :global(ul) {
+		margin-left: 1.5rem;
+		margin-bottom: 1.5rem;
+		color: var(--text-color);
+	}
+	.content :global(p) {
+		margin-bottom: 1.5rem;
+		color: var(--text-color);
+	}
+	
+	@media (max-width: 768px) {
+		.dest-layout {
+			grid-template-columns: 1fr;
+		}
+		.sticky-sidebar {
+			position: static;
+		}
+	}
+</style>

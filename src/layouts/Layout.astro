@@ -1,0 +1,122 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title: string;
+	description?: string;
+}
+
+const { title, description = "Explore Kerala on a budget. Clean, simple guides for your next ₹2,000 trip." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title} | Explore Kerala</title>
+	</head>
+	<body>
+		<header class="main-header shadow-sm">
+			<div class="container header-content">
+				<a href="/" class="logo">Explore Kerala</a>
+				<nav class="main-nav">
+					<a href="/guides">Budget Travel</a>
+					<a href="/destinations">Hidden Places</a>
+					<a href="/food">Food Guide</a>
+					<a href="/tips">Travel Tips</a>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<slot />
+		</main>
+
+		<footer class="main-footer mt-8 py-16">
+			<div class="container footer-grid">
+				<div class="footer-col">
+					<h3>Explore Kerala</h3>
+					<p class="text-light">Affordable, minimalist travel guides for your Kerala adventure.</p>
+				</div>
+				<div class="footer-col">
+					<h4>Discover</h4>
+					<ul>
+						<li><a href="/guides/under-2000">Budget Trips</a></li>
+						<li><a href="/destinations">Beaches & Hills</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>Legal</h4>
+					<ul>
+						<li><a href="/privacy">Privacy Policy</a></li>
+						<li><a href="/terms">Terms & Conditions</a></li>
+						<li><a href="/contact">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="container text-center mt-8 pt-8" style="border-top: 1px solid var(--border-color);">
+				<p class="text-light">&copy; {new Date().getFullYear()} Explore Kerala. All rights reserved.</p>
+			</div>
+		</footer>
+
+		<style>
+			.main-header {
+				background: var(--bg-color);
+				position: sticky;
+				top: 0;
+				z-index: 100;
+				padding: 1rem 0;
+				border-bottom: 1px solid var(--border-color);
+			}
+			.header-content {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.logo {
+				font-size: 1.25rem;
+				font-weight: 700;
+				color: var(--primary);
+			}
+			.main-nav {
+				display: flex;
+				gap: 1.5rem;
+			}
+			.main-nav a {
+				font-weight: 500;
+				color: var(--text-color);
+				font-size: 0.95rem;
+			}
+			.main-nav a:hover {
+				color: var(--primary);
+			}
+			
+			.main-footer {
+				background: var(--secondary-bg);
+				border-top: 1px solid var(--border-color);
+			}
+			.footer-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 2rem;
+			}
+			.footer-col h3, .footer-col h4 {
+				margin-bottom: 1rem;
+				font-size: 1.1rem;
+			}
+			.footer-col ul {
+				list-style: none;
+			}
+			.footer-col ul li {
+				margin-bottom: 0.5rem;
+			}
+			.text-light {
+				color: var(--text-light);
+			}
+		</style>
+	</body>
+</html>
