@@ -1,0 +1,204 @@
+---
+---
+
+<div class="calculator-container glass reveal">
+	<h3 class="text-center mb-4">Travel Budget Calculator</h3>
+	<p class="text-center mb-8">Estimate your total trip cost for exploring Kerala.</p>
+	
+	<div class="calc-grid">
+		<div class="calc-input">
+			<label for="travel-days">Travel Days</label>
+			<input type="number" id="travel-days" min="1" max="30" value="5" />
+		</div>
+		
+		<div class="calc-input">
+			<label for="travel-style">Travel Style</label>
+			<select id="travel-style">
+				<option value="student">Student / Backpacker (Under ₹500/day)</option>
+				<option value="budget">Budget (₹500 - ₹1000/day)</option>
+				<option value="mid">Mid-Range (₹1000 - ₹2000/day)</option>
+				<option value="luxury">Luxury (₹3000+/day)</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="calc-sliders mt-8">
+		<div class="slider-group">
+			<div class="slider-header">
+				<label>Food Budget (per day)</label>
+				<span id="food-val">₹300</span>
+			</div>
+			<input type="range" id="food-budget" min="100" max="2000" step="50" value="300" />
+		</div>
+		<div class="slider-group">
+			<div class="slider-header">
+				<label>Stay Budget (per night)</label>
+				<span id="stay-val">₹400</span>
+			</div>
+			<input type="range" id="stay-budget" min="200" max="5000" step="100" value="400" />
+		</div>
+		<div class="slider-group">
+			<div class="slider-header">
+				<label>Transport Budget (per day)</label>
+				<span id="transport-val">₹150</span>
+			</div>
+			<input type="range" id="transport-budget" min="50" max="1500" step="50" value="150" />
+		</div>
+		<div class="slider-group">
+			<div class="slider-header">
+				<label>Shopping / Misc (Total)</label>
+				<span id="misc-val">₹1000</span>
+			</div>
+			<input type="range" id="misc-budget" min="0" max="10000" step="500" value="1000" />
+		</div>
+	</div>
+
+	<div class="calc-result mt-8">
+		<h4>Estimated Total Cost</h4>
+		<div class="total-cost" id="total-cost">₹5,250</div>
+		<p class="cost-breakdown mt-2">Per Person / <span id="days-display">5</span> Days</p>
+	</div>
+</div>
+
+<script>
+	const daysInput = document.getElementById('travel-days');
+	const styleInput = document.getElementById('travel-style');
+	const foodInput = document.getElementById('food-budget');
+	const stayInput = document.getElementById('stay-budget');
+	const transportInput = document.getElementById('transport-budget');
+	const miscInput = document.getElementById('misc-budget');
+	
+	const foodVal = document.getElementById('food-val');
+	const stayVal = document.getElementById('stay-val');
+	const transportVal = document.getElementById('transport-val');
+	const miscVal = document.getElementById('misc-val');
+	
+	const totalCostDisplay = document.getElementById('total-cost');
+	const daysDisplay = document.getElementById('days-display');
+
+	function calculateTotal() {
+		const days = parseInt(daysInput.value) || 1;
+		const food = parseInt(foodInput.value) || 0;
+		const stay = parseInt(stayInput.value) || 0;
+		const transport = parseInt(transportInput.value) || 0;
+		const misc = parseInt(miscInput.value) || 0;
+
+		const total = (food * days) + (stay * (days - 1 > 0 ? days - 1 : 1)) + (transport * days) + misc;
+		
+		foodVal.innerText = `₹${food}`;
+		stayVal.innerText = `₹${stay}`;
+		transportVal.innerText = `₹${transport}`;
+		miscVal.innerText = `₹${misc}`;
+		
+		totalCostDisplay.innerText = `₹${total.toLocaleString('en-IN')}`;
+		daysDisplay.innerText = days;
+	}
+
+	// Presets based on style
+	styleInput.addEventListener('change', (e) => {
+		const style = e.target.value;
+		if (style === 'student') {
+			foodInput.value = 200; stayInput.value = 300; transportInput.value = 100;
+		} else if (style === 'budget') {
+			foodInput.value = 400; stayInput.value = 800; transportInput.value = 200;
+		} else if (style === 'mid') {
+			foodInput.value = 800; stayInput.value = 1500; transportInput.value = 500;
+		} else {
+			foodInput.value = 1500; stayInput.value = 4000; transportInput.value = 1500;
+		}
+		calculateTotal();
+	});
+
+	[daysInput, foodInput, stayInput, transportInput, miscInput].forEach(input => {
+		input.addEventListener('input', calculateTotal);
+	});
+
+	// Initial calc
+	calculateTotal();
+</script>
+
+<style>
+	.calculator-container {
+		padding: 2rem;
+		border-radius: 16px;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+	.calc-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 1.5rem;
+	}
+	.calc-input {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+	.calc-input label, .slider-header label {
+		font-weight: 500;
+		font-size: 0.9rem;
+	}
+	.calc-input input, .calc-input select {
+		padding: 0.75rem;
+		border-radius: 8px;
+		border: 1px solid var(--border-color);
+		background: var(--card-bg);
+		color: var(--text-color);
+		font-family: inherit;
+	}
+	
+	.slider-group {
+		margin-bottom: 1.5rem;
+	}
+	.slider-header {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 0.5rem;
+	}
+	.slider-header span {
+		font-weight: 600;
+		color: var(--primary);
+	}
+	
+	/* Custom Range Slider */
+	input[type=range] {
+		-webkit-appearance: none;
+		width: 100%;
+		background: transparent;
+	}
+	input[type=range]::-webkit-slider-thumb {
+		-webkit-appearance: none;
+		height: 20px;
+		width: 20px;
+		border-radius: 50%;
+		background: var(--primary);
+		cursor: pointer;
+		margin-top: -8px;
+		box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+	}
+	input[type=range]::-webkit-slider-runnable-track {
+		width: 100%;
+		height: 6px;
+		cursor: pointer;
+		background: var(--border-color);
+		border-radius: 3px;
+	}
+	
+	.calc-result {
+		text-align: center;
+		padding: 1.5rem;
+		background: rgba(14, 165, 233, 0.1);
+		border-radius: 12px;
+		border: 1px solid rgba(14, 165, 233, 0.2);
+	}
+	.total-cost {
+		font-size: 3rem;
+		font-weight: 700;
+		color: var(--primary);
+		font-family: var(--font-heading);
+	}
+	.cost-breakdown {
+		font-size: 0.9rem;
+		opacity: 0.8;
+	}
+</style>

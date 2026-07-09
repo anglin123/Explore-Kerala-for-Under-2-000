@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const destinations = [
+	{ name: 'Ernakulam', title: 'The Commercial Capital', img: 'https://images.unsplash.com/photo-1599839619722-39751411ea63?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', link: '/destinations/ernakulam' },
+	{ name: 'Idukki', title: 'Hills & Spice Plantations', img: 'https://images.unsplash.com/photo-1593693397690-362cb9666c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', link: '/destinations/idukki' },
+	{ name: 'Wayanad', title: 'Nature\'s Abode', img: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', link: '/destinations/wayanad' },
+	// Other 11 districts would follow...
+];
+---
+
+<Layout title="Kerala Destinations">
+	<div class="container py-16 text-center">
+		<h1 class="mb-4 reveal">Discover Kerala by District</h1>
+		<p class="mb-8 reveal">From the misty hills of Idukki to the backwaters of Alappuzha, explore every corner of God's Own Country.</p>
+		
+		<div class="dest-grid">
+			{destinations.map(dest => (
+				<a href={dest.link} class="dest-card glass reveal">
+					<img src={dest.img} alt={dest.name} loading="lazy" />
+					<div class="dest-info">
+						<h2>{dest.name}</h2>
+						<p>{dest.title}</p>
+					</div>
+				</a>
+			))}
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.dest-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+	.dest-card {
+		border-radius: 12px;
+		overflow: hidden;
+		display: block;
+		color: var(--text-color);
+	}
+	.dest-card img {
+		width: 100%;
+		height: 250px;
+		object-fit: cover;
+		transition: transform var(--transition-normal);
+	}
+	.dest-card:hover img {
+		transform: scale(1.05);
+	}
+	.dest-info {
+		padding: 1.5rem;
+		text-align: left;
+	}
+	.dest-info h2 {
+		margin-bottom: 0.25rem;
+	}
+</style>

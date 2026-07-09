@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
@@ -12,6 +13,37 @@
   
   --font-sans: 'Inter', sans-serif;
   --transition-normal: 0.2s ease-in-out;
+=======
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Color Palette - Premium Dark/Light */
+  --bg-color: #f8fafc;
+  --text-color: #0f172a;
+  --primary: #0ea5e9;
+  --primary-hover: #0284c7;
+  --accent: #f59e0b;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="dark"] {
+  --bg-color: #0f172a;
+  --text-color: #f8fafc;
+  --card-bg: #1e293b;
+  --border-color: #334155;
+  
+  --glass-bg: rgba(30, 41, 59, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+>>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 }
 
 * {
@@ -24,14 +56,24 @@ body {
   font-family: var(--font-sans);
   background-color: var(--bg-color);
   color: var(--text-color);
+<<<<<<< HEAD
   line-height: 1.7;
+=======
+  line-height: 1.6;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+>>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
+<<<<<<< HEAD
   font-weight: 700;
   color: #111827;
   line-height: 1.3;
+=======
+  font-family: var(--font-heading);
+  line-height: 1.2;
+>>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
   margin-bottom: 1rem;
 }
 
@@ -46,22 +88,44 @@ a:hover {
 }
 
 .container {
+<<<<<<< HEAD
   max-width: 1100px;
+=======
+  max-width: 1200px;
+>>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
+<<<<<<< HEAD
+=======
+/* Glassmorphism Utilities */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+>>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 /* Buttons */
 .btn {
   display: inline-block;
   padding: 0.75rem 1.5rem;
+<<<<<<< HEAD
   border-radius: 4px;
+=======
+  border-radius: 9999px;
+>>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
   font-weight: 500;
   cursor: pointer;
   transition: all var(--transition-normal);
   border: none;
   font-family: var(--font-sans);
+<<<<<<< HEAD
   text-align: center;
+=======
+>>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 }
 
 .btn-primary {
@@ -71,6 +135,15 @@ a:hover {
 
 .btn-primary:hover {
   background: var(--primary-hover);
+<<<<<<< HEAD
+=======
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+.btn-accent {
+  background: var(--accent);
+>>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
   color: white;
 }
 
@@ -83,6 +156,7 @@ a:hover {
 .mt-4 { margin-top: 1rem; }
 .mt-8 { margin-top: 2rem; }
 .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+<<<<<<< HEAD
 .shadow-sm { box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
 .shadow-md { box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
 
@@ -97,4 +171,16 @@ a:hover {
 .card:hover {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
+=======
+
+/* Scroll Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+>>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 }
