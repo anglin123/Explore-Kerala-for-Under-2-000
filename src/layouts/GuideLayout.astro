@@ -6,72 +6,38 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
-<<<<<<< HEAD
-	<!-- Minimalist Guide Hero -->
-	<section class="guide-hero bg-light text-center py-16">
-		<div class="container hero-content">
-			<span class="category-badge">{frontmatter.category}</span>
-			<h1 class="hero-title">{frontmatter.title}</h1>
-			<p class="hero-subtitle text-light">{frontmatter.description}</p>
-			<div class="author-meta mt-4 text-light">
-				<span>By {frontmatter.author}</span> | <span>{frontmatter.date}</span> | <span>{frontmatter.readTime}</span>
-			</div>
-			{frontmatter.heroImage && (
-				<img src={frontmatter.heroImage} alt={frontmatter.title} class="hero-image shadow-md mt-8" loading="lazy" />
-			)}
-=======
-	<!-- Guide Hero -->
 	<section class="guide-hero relative">
-		<div class="hero-bg" style={`background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('${frontmatter.heroImage}');`}></div>
+		<div
+			class="hero-bg"
+			style={`background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('${frontmatter.heroImage}');`}
+		></div>
+
 		<div class="container hero-content text-center reveal">
 			<span class="category-badge">{frontmatter.category}</span>
 			<h1 class="hero-title">{frontmatter.title}</h1>
 			<p class="hero-subtitle">{frontmatter.description}</p>
+
 			<div class="author-meta mt-4">
-				<span>By {frontmatter.author}</span> | <span>{frontmatter.date}</span> | <span>{frontmatter.readTime}</span>
+				<span>By {frontmatter.author}</span> |
+				<span>{frontmatter.date}</span> |
+				<span>{frontmatter.readTime}</span>
 			</div>
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 		</div>
 	</section>
 
 	<div class="container guide-layout mt-8 mb-8">
-		<!-- Sidebar Share/TOC -->
-<<<<<<< HEAD
-		<aside class="sidebar sticky-sidebar">
-			<div class="card p-4 shadow-sm mb-4">
-				<h3 style="margin-bottom: 0.5rem; font-size: 1rem;">Share</h3>
-				<div class="social-share">
-					<a href="#" class="share-link">Facebook</a>
-					<a href="#" class="share-link">Twitter</a>
-					<a href="#" class="share-link">WhatsApp</a>
-				</div>
-			</div>
-			
-			<div class="card p-4 shadow-sm">
-				<h3 style="margin-bottom: 0.5rem; font-size: 1rem;">Table of Contents</h3>
-				<nav class="toc">
-					<a href="#overview">Overview</a>
-					<a href="#itinerary">Itinerary</a>
-					<a href="#budget-breakdown">Budget Breakdown</a>
-					<a href="#tips">Pro Tips</a>
-				</nav>
-			</div>
-		</aside>
-
-		<!-- Main Content -->
-		<article class="content p-8 card shadow-sm">
-=======
 		<aside class="sidebar glass sticky-sidebar reveal">
 			<h3>Share</h3>
+
 			<div class="social-share mb-8">
 				<a href="#" class="btn-icon">FB</a>
 				<a href="#" class="btn-icon">TW</a>
 				<a href="#" class="btn-icon">WA</a>
 			</div>
-			
+
 			<h3>Table of Contents</h3>
+
 			<nav class="toc">
-				<!-- We can use JS to auto-generate this, or manual anchors -->
 				<a href="#overview">Overview</a>
 				<a href="#itinerary">Itinerary</a>
 				<a href="#budget-breakdown">Budget Breakdown</a>
@@ -79,30 +45,32 @@ const { frontmatter } = Astro.props;
 			</nav>
 		</aside>
 
-		<!-- Main Content -->
 		<article class="content glass p-8 reveal">
 			<div class="reading-progress-container">
 				<div class="reading-progress-bar" id="reading-progress"></div>
 			</div>
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
+
 			<slot />
 		</article>
 	</div>
 </Layout>
 
-<<<<<<< HEAD
-<style>
-	.bg-light {
-		background-color: var(--secondary-bg);
-		border-bottom: 1px solid var(--border-color);
-=======
 <script>
-	// Reading Progress Bar
 	window.addEventListener('scroll', () => {
-		const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-		const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+		const winScroll =
+			document.body.scrollTop || document.documentElement.scrollTop;
+
+		const height =
+			document.documentElement.scrollHeight -
+			document.documentElement.clientHeight;
+
 		const scrolled = (winScroll / height) * 100;
-		document.getElementById('reading-progress').style.width = scrolled + '%';
+
+		const bar = document.getElementById('reading-progress');
+
+		if (bar) {
+			bar.style.width = scrolled + '%';
+		}
 	});
 </script>
 
@@ -117,185 +85,128 @@ const { frontmatter } = Astro.props;
 		overflow: hidden;
 		margin-top: -80px;
 	}
+
 	.hero-bg {
 		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
+		inset: 0;
 		background-position: center;
 		background-size: cover;
 		z-index: -1;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 	}
+
 	.category-badge {
 		background: var(--primary);
 		color: white;
 		padding: 0.25rem 1rem;
-<<<<<<< HEAD
-		border-radius: 4px;
-=======
 		border-radius: 20px;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 		font-weight: 600;
 		font-size: 0.85rem;
 		text-transform: uppercase;
 		display: inline-block;
 		margin-bottom: 1rem;
 	}
+
 	.hero-title {
 		font-size: 3rem;
-		margin-bottom: 0.5rem;
-<<<<<<< HEAD
-		color: var(--text-color);
-		max-width: 800px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	.hero-subtitle {
-		font-size: 1.25rem;
-=======
 		max-width: 800px;
 		margin: 0 auto;
 	}
+
 	.hero-subtitle {
 		font-size: 1.25rem;
 		opacity: 0.9;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 		max-width: 700px;
 		margin: 1rem auto;
 	}
+
 	.author-meta {
 		font-size: 0.9rem;
-<<<<<<< HEAD
-	}
-	.hero-image {
-		width: 100%;
-		max-height: 450px;
-		object-fit: cover;
-		border-radius: 8px;
-=======
 		opacity: 0.8;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 	}
+
 	.guide-layout {
 		display: grid;
 		grid-template-columns: 250px 1fr;
 		gap: 2rem;
 	}
+
 	.sticky-sidebar {
 		position: sticky;
 		top: 100px;
 		align-self: start;
-<<<<<<< HEAD
-	}
-	.p-4 { padding: 1rem; }
-	.p-8 { padding: 2rem; }
-	
-	.social-share {
-		display: flex;
-		flex-direction: column;
-		gap: 0.25rem;
-	}
-	.share-link {
-		color: var(--text-light);
-		font-size: 0.9rem;
-	}
-	.share-link:hover {
-		color: var(--primary);
-=======
 		padding: 1.5rem;
 		border-radius: 12px;
 	}
+
 	.social-share {
 		display: flex;
 		gap: 0.5rem;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 	}
+
 	.toc {
 		display: flex;
 		flex-direction: column;
-<<<<<<< HEAD
-		gap: 0.5rem;
-	}
-	.toc a {
-		color: var(--text-light);
-		font-size: 0.9rem;
-	}
-	.toc a:hover {
-		color: var(--primary);
-	}
-	
-	.content :global(h2) {
-		margin-top: 2.5rem;
-		margin-bottom: 1rem;
-		color: var(--primary);
-		border-bottom: 1px solid var(--border-color);
-		padding-bottom: 0.5rem;
-=======
 		gap: 0.75rem;
 		margin-top: 1rem;
 	}
+
 	.toc a {
 		color: var(--text-color);
 		opacity: 0.8;
 	}
+
 	.toc a:hover {
 		color: var(--primary);
 		opacity: 1;
 	}
+
 	.content {
 		border-radius: 12px;
 		position: relative;
 	}
-	
-	/* Reading Progress */
+
 	.reading-progress-container {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
 		height: 4px;
-		background: rgba(0,0,0,0.05);
+		background: rgba(0, 0, 0, 0.05);
 		border-radius: 12px 12px 0 0;
 		overflow: hidden;
 	}
+
 	.reading-progress-bar {
 		height: 100%;
 		background: var(--primary);
 		width: 0%;
 	}
-	
+
 	.content :global(h2) {
 		margin-top: 2rem;
 		margin-bottom: 1rem;
 		color: var(--primary);
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 	}
+
 	.content :global(h3) {
 		margin-top: 1.5rem;
 		margin-bottom: 0.75rem;
 	}
+
 	.content :global(ul) {
 		margin-left: 1.5rem;
 		margin-bottom: 1.5rem;
-<<<<<<< HEAD
-		color: var(--text-color);
 	}
+
 	.content :global(p) {
 		margin-bottom: 1.5rem;
-		color: var(--text-color);
-=======
 	}
-	.content :global(p) {
-		margin-bottom: 1.5rem;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-	}
-	
+
 	@media (max-width: 768px) {
 		.guide-layout {
 			grid-template-columns: 1fr;
 		}
+
 		.sticky-sidebar {
 			position: static;
 		}

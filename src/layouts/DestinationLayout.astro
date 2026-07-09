@@ -6,46 +6,16 @@ const { frontmatter } = Astro.props;
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description}>
-<<<<<<< HEAD
-	<!-- Minimalist Destination Hero -->
-	<section class="dest-hero bg-light text-center py-16">
-		<div class="container hero-content">
-			<h1 class="hero-title">{frontmatter.title}</h1>
-			<p class="hero-subtitle text-light">{frontmatter.subtitle}</p>
-			{frontmatter.heroImage && (
-				<img src={frontmatter.heroImage} alt={frontmatter.title} class="hero-image shadow-md mt-8" loading="lazy" />
-			)}
-=======
 	<!-- Destination Hero -->
 	<section class="dest-hero relative">
 		<div class="hero-bg" style={`background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('${frontmatter.heroImage}');`}></div>
 		<div class="container hero-content text-center reveal">
 			<h1 class="hero-title">{frontmatter.title}</h1>
 			<p class="hero-subtitle">{frontmatter.subtitle}</p>
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 		</div>
 	</section>
 
 	<div class="container dest-layout mt-8 mb-8">
-		<!-- Sidebar Navigation (Table of Contents) -->
-<<<<<<< HEAD
-		<aside class="sidebar sticky-sidebar">
-			<div class="card p-4 shadow-sm">
-				<h3 style="margin-bottom: 0.5rem; font-size: 1rem;">On this page</h3>
-				<nav class="toc">
-					<a href="#introduction">Introduction</a>
-					<a href="#how-to-reach">How to Reach</a>
-					<a href="#attractions">Best Attractions</a>
-					<a href="#hidden-places">Hidden Places</a>
-					<a href="#budget">Budget & Stay</a>
-					<a href="#itinerary">Itinerary</a>
-				</nav>
-			</div>
-		</aside>
-
-		<!-- Main Content -->
-		<article class="content p-8 card shadow-sm">
-=======
 		<aside class="sidebar glass sticky-sidebar reveal">
 			<h3>On this page</h3>
 			<nav class="toc">
@@ -58,34 +28,13 @@ const { frontmatter } = Astro.props;
 			</nav>
 		</aside>
 
-		<!-- Main Content -->
 		<article class="content glass p-8 reveal">
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 			<slot />
 		</article>
 	</div>
 </Layout>
 
 <style>
-<<<<<<< HEAD
-	.bg-light {
-		background-color: var(--secondary-bg);
-		border-bottom: 1px solid var(--border-color);
-	}
-	.hero-title {
-		font-size: 3rem;
-		margin-bottom: 0.5rem;
-		color: var(--primary);
-	}
-	.hero-subtitle {
-		font-size: 1.25rem;
-	}
-	.hero-image {
-		width: 100%;
-		max-height: 400px;
-		object-fit: cover;
-		border-radius: 8px;
-=======
 	.dest-hero {
 		min-height: 50vh;
 		display: flex;
@@ -94,8 +43,9 @@ const { frontmatter } = Astro.props;
 		color: white;
 		position: relative;
 		overflow: hidden;
-		margin-top: -80px; /* pull up behind header */
+		margin-top: -80px;
 	}
+
 	.hero-bg {
 		position: absolute;
 		top: 0;
@@ -106,97 +56,79 @@ const { frontmatter } = Astro.props;
 		background-size: cover;
 		z-index: -1;
 	}
+
 	.hero-title {
 		font-size: 3.5rem;
 		margin-bottom: 0.5rem;
 	}
+
 	.hero-subtitle {
 		font-size: 1.25rem;
 		opacity: 0.9;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 	}
+
 	.dest-layout {
 		display: grid;
 		grid-template-columns: 250px 1fr;
 		gap: 2rem;
 	}
+
 	.sticky-sidebar {
 		position: sticky;
 		top: 100px;
 		align-self: start;
-<<<<<<< HEAD
-	}
-	.p-4 { padding: 1rem; }
-	.p-8 { padding: 2rem; }
-	
-	.toc {
-		display: flex;
-		flex-direction: column;
-		gap: 0.5rem;
-	}
-	.toc a {
-		color: var(--text-light);
-		font-size: 0.9rem;
-	}
-	.toc a:hover {
-		color: var(--primary);
-	}
-	
-	.content :global(h2) {
-		margin-top: 2.5rem;
-=======
 		padding: 1.5rem;
 		border-radius: 12px;
 	}
+
 	.toc {
 		display: flex;
 		flex-direction: column;
 		gap: 0.75rem;
 		margin-top: 1rem;
 	}
+
 	.toc a {
 		color: var(--text-color);
 		opacity: 0.8;
 	}
+
 	.toc a:hover {
 		color: var(--primary);
 		opacity: 1;
 	}
+
 	.content {
 		border-radius: 12px;
 	}
+
 	.content :global(h2) {
 		margin-top: 2rem;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
 		margin-bottom: 1rem;
 		color: var(--primary);
 		border-bottom: 1px solid var(--border-color);
 		padding-bottom: 0.5rem;
 	}
+
 	.content :global(h3) {
 		margin-top: 1.5rem;
 		margin-bottom: 0.75rem;
 	}
+
 	.content :global(ul) {
 		margin-left: 1.5rem;
 		margin-bottom: 1.5rem;
-<<<<<<< HEAD
-		color: var(--text-color);
 	}
+
 	.content :global(p) {
 		margin-bottom: 1.5rem;
-		color: var(--text-color);
-=======
 	}
-	.content :global(p) {
-		margin-bottom: 1.5rem;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-	}
-	
+
 	@media (max-width: 768px) {
 		.dest-layout {
 			grid-template-columns: 1fr;
 		}
+
 		.sticky-sidebar {
 			position: static;
 		}

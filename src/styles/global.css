@@ -1,23 +1,6 @@
-<<<<<<< HEAD
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
-:root {
-  /* Color Palette - Minimalist White & Green */
-  --bg-color: #ffffff;
-  --text-color: #333333;
-  --text-light: #666666;
-  --primary: #16a34a; /* Kerala Green */
-  --primary-hover: #15803d;
-  --secondary-bg: #f9fafb;
-  --border-color: #e5e7eb;
-  
-  --font-sans: 'Inter', sans-serif;
-  --transition-normal: 0.2s ease-in-out;
-=======
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Color Palette - Premium Dark/Light */
   --bg-color: #f8fafc;
   --text-color: #0f172a;
   --primary: #0ea5e9;
@@ -25,14 +8,14 @@
   --accent: #f59e0b;
   --card-bg: #ffffff;
   --border-color: #e2e8f0;
-  
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  
+
+  --glass-bg: rgba(255,255,255,.7);
+  --glass-border: rgba(255,255,255,.4);
+
   --font-sans: 'Inter', sans-serif;
   --font-heading: 'Outfit', sans-serif;
 
-  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: .3s cubic-bezier(.4,0,.2,1);
 }
 
 [data-theme="dark"] {
@@ -40,147 +23,103 @@
   --text-color: #f8fafc;
   --card-bg: #1e293b;
   --border-color: #334155;
-  
-  --glass-bg: rgba(30, 41, 59, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
+
+  --glass-bg: rgba(30,41,59,.7);
+  --glass-border: rgba(255,255,255,.1);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  font-family: var(--font-sans);
-  background-color: var(--bg-color);
-  color: var(--text-color);
-<<<<<<< HEAD
-  line-height: 1.7;
-=======
-  line-height: 1.6;
-  transition: background-color var(--transition-normal), color var(--transition-normal);
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-  overflow-x: hidden;
+body{
+  font-family:var(--font-sans);
+  background:var(--bg-color);
+  color:var(--text-color);
+  line-height:1.6;
+  overflow-x:hidden;
+  transition:background-color var(--transition-normal),
+             color var(--transition-normal);
 }
 
-h1, h2, h3, h4, h5, h6 {
-<<<<<<< HEAD
-  font-weight: 700;
-  color: #111827;
-  line-height: 1.3;
-=======
-  font-family: var(--font-heading);
-  line-height: 1.2;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-  margin-bottom: 1rem;
+h1,h2,h3,h4,h5,h6{
+  font-family:var(--font-heading);
+  line-height:1.2;
+  margin-bottom:1rem;
 }
 
-a {
-  color: var(--primary);
-  text-decoration: none;
-  transition: color var(--transition-normal);
+a{
+  color:var(--primary);
+  text-decoration:none;
+  transition:color var(--transition-normal);
 }
 
-a:hover {
-  color: var(--primary-hover);
+a:hover{
+  color:var(--primary-hover);
 }
 
-.container {
-<<<<<<< HEAD
-  max-width: 1100px;
-=======
-  max-width: 1200px;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-  margin: 0 auto;
-  padding: 0 1.5rem;
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 1.5rem;
 }
 
-<<<<<<< HEAD
-=======
-/* Glassmorphism Utilities */
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
+.glass{
+  background:var(--glass-bg);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--glass-border);
 }
 
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-<<<<<<< HEAD
-  border-radius: 4px;
-=======
-  border-radius: 9999px;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-  font-weight: 500;
-  cursor: pointer;
-  transition: all var(--transition-normal);
-  border: none;
-  font-family: var(--font-sans);
-<<<<<<< HEAD
-  text-align: center;
-=======
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
+.btn{
+  display:inline-block;
+  padding:.75rem 1.5rem;
+  border-radius:9999px;
+  border:none;
+  cursor:pointer;
+  font-weight:500;
+  transition:all var(--transition-normal);
 }
 
-.btn-primary {
-  background: var(--primary);
-  color: white;
+.btn-primary{
+  background:var(--primary);
+  color:#fff;
 }
 
-.btn-primary:hover {
-  background: var(--primary-hover);
-<<<<<<< HEAD
-=======
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+.btn-primary:hover{
+  background:var(--primary-hover);
+  transform:translateY(-2px);
 }
 
-.btn-accent {
-  background: var(--accent);
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-  color: white;
+.btn-accent{
+  background:var(--accent);
+  color:#fff;
 }
 
-/* Utilities */
-.text-center { text-align: center; }
-.mb-1 { margin-bottom: 0.25rem; }
-.mb-2 { margin-bottom: 0.5rem; }
-.mb-4 { margin-bottom: 1rem; }
-.mb-8 { margin-bottom: 2rem; }
-.mt-4 { margin-top: 1rem; }
-.mt-8 { margin-top: 2rem; }
-.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
-<<<<<<< HEAD
-.shadow-sm { box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-.shadow-md { box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.text-center{ text-align:center; }
 
-/* Card Style */
-.card {
-  background: white;
-  border: 1px solid var(--border-color);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: box-shadow var(--transition-normal), transform var(--transition-normal);
-}
-.card:hover {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  transform: translateY(-2px);
-=======
+.mb-1{margin-bottom:.25rem;}
+.mb-2{margin-bottom:.5rem;}
+.mb-4{margin-bottom:1rem;}
+.mb-8{margin-bottom:2rem;}
 
-/* Scroll Reveal */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease;
+.mt-4{margin-top:1rem;}
+.mt-8{margin-top:2rem;}
+
+.py-16{
+  padding-top:4rem;
+  padding-bottom:4rem;
 }
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
+
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:all .8s ease;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
 }

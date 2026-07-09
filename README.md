@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # Astro Starter Kit: Basics
 
 ```sh
@@ -47,4 +47,4 @@ All commands are run from the root of the project, from a terminal:
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
 =======
 # Explore-Kerala-for-Under-2-000
->>>>>>> b1535118dcb48b01cf3b05240177d72986b42876
+

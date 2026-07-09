@@ -1,300 +1,100 @@
 ---
 import Layout from '../layouts/Layout.astro';
-<<<<<<< HEAD
-
-const featuredArticles = [
-	{ title: 'Best Budget Trips in Kerala', desc: 'Top 5 itineraries for under ₹2,000.', link: '/guides/best-budget-trips', img: 'https://images.unsplash.com/photo-1593693397690-362cb9666c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
-	{ title: 'Hidden Places in Kerala', desc: 'Secret spots untouched by mass tourism.', link: '/guides/hidden-places', img: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
-	{ title: 'Kerala Bus Travel Guide', desc: 'How to use KSRTC to travel on a shoestring.', link: '/guides/bus-travel', img: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
-];
-
-const popularDestinations = ['Munnar', 'Alleppey', 'Wayanad', 'Varkala', 'Fort Kochi', 'Vagamon'];
----
-
-<Layout title="Home">
-	<!-- Minimalist Hero Section -->
-	<section class="hero py-16 text-center">
-		<div class="container hero-content">
-			<h1 class="hero-title">Explore Kerala on a Budget</h1>
-			<p class="hero-subtitle text-light mb-8">Simple, affordable, and authentic travel guides for your next ₹2,000 adventure.</p>
-			<img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Kerala Backwaters" class="hero-image shadow-md" loading="lazy" />
-		</div>
-	</section>
-
-	<!-- Welcome Section -->
-	<section class="welcome bg-light py-16">
-		<div class="container text-center">
-			<h2 class="mb-4">Welcome to Explore Kerala</h2>
-			<p class="text-light" style="max-width: 700px; margin: 0 auto;">We believe that experiencing the beauty of God's Own Country shouldn't require a luxury budget. From hidden backwaters to misty tea gardens, we provide actionable tips to help you travel for under ₹2,000 a day.</p>
-		</div>
-	</section>
-
-	<!-- Featured Articles -->
-	<section class="py-16 container">
-		<h2 class="text-center mb-8">Featured Articles</h2>
-		<div class="article-grid">
-			{featuredArticles.map(article => (
-				<a href={article.link} class="card">
-					<img src={article.img} alt={article.title} class="card-img" loading="lazy" />
-					<div class="card-content">
-						<h3>{article.title}</h3>
-						<p class="text-light">{article.desc}</p>
-						<span class="read-more mt-4">Read Article &rarr;</span>
-=======
 import '../styles/global.css';
-
-// Components we will build later
-// import InteractiveMap from '../components/InteractiveMap.astro';
 import BudgetCalculator from '../components/BudgetCalculator.astro';
 
 const featuredDestinations = [
-	{ name: 'Munnar', title: 'Tea Gardens & Misty Hills', image: 'https://images.unsplash.com/photo-1593693397690-362cb9666c6c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
-	{ name: 'Alleppey', title: 'Backwater Houseboats', image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
-	{ name: 'Varkala', title: 'Stunning Cliff Beaches', image: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80' },
+  {
+    name: 'Munnar',
+    title: 'Tea Gardens & Misty Hills',
+    image: 'https://images.unsplash.com/photo-1593693397690-362cb9666c6c?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    name: 'Alleppey',
+    title: 'Backwater Houseboats',
+    image: 'https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=800&q=80'
+  },
+  {
+    name: 'Varkala',
+    title: 'Stunning Cliff Beaches',
+    image: 'https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?auto=format&fit=crop&w=800&q=80'
+  }
 ];
 
 const budgetGuides = [
-	{ title: 'Explore Kerala for Under ₹2,000', desc: 'The ultimate guide to backpacking Kerala on a shoestring budget.', link: '/guides/under-2000' },
-	{ title: 'Weekend Trip Under ₹1,500', desc: 'Quick getaways that won\'t break the bank.', link: '/guides/weekend-1500' },
-	{ title: 'Cheap Kerala Honeymoon', desc: 'Romantic experiences in God\'s own country on a budget.', link: '/guides/cheap-honeymoon' },
+  {
+    title: 'Explore Kerala for Under ₹2,000',
+    desc: 'The ultimate guide to backpacking Kerala on a shoestring budget.',
+    link: '/guides/under-2000'
+  },
+  {
+    title: 'Weekend Trip Under ₹1,500',
+    desc: "Quick getaways that won't break the bank.",
+    link: '/guides/weekend-1500'
+  },
+  {
+    title: 'Cheap Kerala Honeymoon',
+    desc: "Romantic experiences in God's Own Country on a budget.",
+    link: '/guides/cheap-honeymoon'
+  }
 ];
 ---
 
 <Layout title="Home">
-	<!-- Hero Section -->
-	<section class="hero relative">
-		<div class="hero-bg"></div>
-		<div class="container hero-content text-center reveal">
-			<h1 class="hero-title">Experience Kerala on a Budget</h1>
-			<p class="hero-subtitle">Discover hidden gems, stunning landscapes, and rich culture without breaking the bank. Your ultimate guide to traveling Kerala for under ₹2,000.</p>
-			<div class="mt-8">
-				<a href="/destinations" class="btn btn-primary">Explore Destinations</a>
-				<a href="/budget-calculator" class="btn btn-accent" style="margin-left: 1rem;">Calculate Budget</a>
-			</div>
-		</div>
-	</section>
 
-	<!-- Featured Destinations -->
-	<section class="py-16 container">
-		<h2 class="text-center mb-8 reveal">Trending Destinations</h2>
-		<div class="destination-grid">
-			{featuredDestinations.map(dest => (
-				<a href={`/destinations/${dest.name.toLowerCase()}`} class="destination-card glass reveal">
-					<img src={dest.image} alt={dest.name} class="destination-img" loading="lazy" />
-					<div class="destination-info">
-						<h3>{dest.name}</h3>
-						<p>{dest.title}</p>
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-					</div>
-				</a>
-			))}
-		</div>
-	</section>
+<section class="hero">
+  <div class="hero-bg"></div>
 
-<<<<<<< HEAD
-	<!-- Popular Destinations -->
-	<section class="py-16 container text-center">
-		<h2 class="mb-8">Popular Destinations</h2>
-		<div class="tags-grid">
-			{popularDestinations.map(dest => (
-				<a href={`/destinations/${dest.toLowerCase().replace(' ', '-')}`} class="tag-pill">{dest}</a>
-=======
-	<!-- Top Budget Trips -->
-	<section class="py-16 container" style="background-color: var(--card-bg); border-radius: 20px;">
-		<h2 class="text-center mb-8 reveal">Top Budget Guides</h2>
-		<div class="guide-grid">
-			{budgetGuides.map(guide => (
-				<div class="guide-card glass reveal">
-					<h3>{guide.title}</h3>
-					<p>{guide.desc}</p>
-					<a href={guide.link} class="read-more mt-4">Read Guide &rarr;</a>
-				</div>
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-			))}
-		</div>
-	</section>
+  <div class="container hero-content">
+    <h1>Experience Kerala on a Budget</h1>
 
-<<<<<<< HEAD
-	<!-- Newsletter -->
-	<section class="newsletter-section py-16 bg-light text-center">
-		<div class="container" style="max-width: 600px;">
-			<h2 class="mb-4">Get Budget Travel Tips</h2>
-			<p class="text-light mb-4">Subscribe to our newsletter for the latest hidden gems and budget itineraries.</p>
-			<form class="newsletter-form">
-				<input type="email" placeholder="Your email address" required />
-				<button type="submit" class="btn btn-primary">Subscribe</button>
-			</form>
-=======
-	<!-- Travel Cost Calculator Section -->
-	<section class="py-16 container">
-		<h2 class="text-center mb-8 reveal">Plan Your Trip Budget</h2>
-		<BudgetCalculator />
-	</section>
+    <p>
+      Discover hidden gems, beautiful beaches and hill stations
+      without spending a fortune.
+    </p>
 
-	<!-- Interactive Map Section Placeholder -->
-	<section class="py-16 container text-center reveal">
-		<h2 class="mb-4">Kerala District Explorer</h2>
-		<p class="mb-8">Click on a district to discover budget travel tips, hidden gems, and itineraries.</p>
-		<div class="glass" style="height: 400px; display: flex; align-items: center; justify-content: center; border-radius: 12px;">
-			<p>Interactive Map Component Loading...</p>
-			<!-- <InteractiveMap /> -->
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-		</div>
-	</section>
+    <div class="buttons">
+      <a href="/destinations">Explore Destinations</a>
+      <a href="/budget-calculator">Budget Calculator</a>
+    </div>
+  </div>
+</section>
+
+<section class="container">
+  <h2>Trending Destinations</h2>
+
+  <div class="destination-grid">
+    {
+      featuredDestinations.map((d) => (
+        <a href={`/destinations/${d.name.toLowerCase()}`}>
+          <img src={d.image} alt={d.name} loading="lazy" />
+          <h3>{d.name}</h3>
+          <p>{d.title}</p>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<section class="container">
+  <h2>Top Budget Guides</h2>
+
+  <div class="guide-grid">
+    {
+      budgetGuides.map((g) => (
+        <div>
+          <h3>{g.title}</h3>
+          <p>{g.desc}</p>
+          <a href={g.link}>Read Guide →</a>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<section class="container">
+  <h2>Plan Your Trip Budget</h2>
+  <BudgetCalculator />
+</section>
+
 </Layout>
-
-<style>
-<<<<<<< HEAD
-	.hero-title {
-		font-size: 3.5rem;
-		color: var(--primary);
-	}
-	.hero-subtitle {
-		font-size: 1.25rem;
-		max-width: 600px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	.hero-image {
-		width: 100%;
-		max-height: 500px;
-		object-fit: cover;
-		border-radius: 12px;
-	}
-	
-	.bg-light {
-		background-color: var(--secondary-bg);
-	}
-
-	.article-grid {
-=======
-	.hero {
-		min-height: 80vh;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		color: white;
-		position: relative;
-		overflow: hidden;
-	}
-	.hero-bg {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover;
-		z-index: -1;
-	}
-	.hero-content {
-		max-width: 800px;
-	}
-	.hero-title {
-		font-size: 4rem;
-		margin-bottom: 1rem;
-		text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-	}
-	.hero-subtitle {
-		font-size: 1.25rem;
-		opacity: 0.9;
-	}
-
-	.destination-grid, .guide-grid {
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
-	}
-<<<<<<< HEAD
-	.card {
-		display: flex;
-		flex-direction: column;
-		color: var(--text-color);
-	}
-	.card-img {
-		width: 100%;
-		height: 200px;
-		object-fit: cover;
-	}
-	.card-content {
-		padding: 1.5rem;
-	}
-	.read-more {
-		display: inline-block;
-		font-weight: 600;
-		color: var(--primary);
-		font-size: 0.9rem;
-	}
-
-	.tags-grid {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		gap: 1rem;
-	}
-	.tag-pill {
-		padding: 0.5rem 1.5rem;
-		border-radius: 9999px;
-		background: white;
-		border: 1px solid var(--border-color);
-		color: var(--text-color);
-		font-weight: 500;
-	}
-	.tag-pill:hover {
-		border-color: var(--primary);
-		color: var(--primary);
-	}
-
-	.newsletter-form {
-		display: flex;
-		gap: 0.5rem;
-	}
-	.newsletter-form input {
-		flex: 1;
-		padding: 0.75rem;
-		border-radius: 4px;
-		border: 1px solid var(--border-color);
-=======
-
-	.destination-card {
-		border-radius: 12px;
-		overflow: hidden;
-		display: block;
-		color: var(--text-color);
-		position: relative;
-	}
-	.destination-card:hover .destination-img {
-		transform: scale(1.05);
-	}
-	.destination-img {
-		width: 100%;
-		height: 250px;
-		object-fit: cover;
-		transition: transform var(--transition-normal);
-	}
-	.destination-info {
-		padding: 1.5rem;
-	}
-
-	.guide-card {
-		padding: 2rem;
-		border-radius: 12px;
-	}
-	.read-more {
-		display: inline-block;
-		font-weight: 600;
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-	}
-	
-	@media (max-width: 768px) {
-		.hero-title {
-			font-size: 2.5rem;
-		}
-<<<<<<< HEAD
-		.newsletter-form {
-			flex-direction: column;
-		}
-=======
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
-	}
-</style>
