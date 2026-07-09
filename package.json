@@ -1,14 +1,5 @@
 {
-<<<<<<< HEAD
-  "name": "explore-kerala",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-=======
-  "name": "explore-kerala-for-under--2-000",
+  "name": "explore-kerala-for-under-2000",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -17,20 +8,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "astro": "^4.11.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.5.0"
-  }
-}
-=======
     "astro": "^7.0.6"
   }
 }
->>>>>>> 7263ec5472699ad5c8e114b269df9333c200a929
